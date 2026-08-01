@@ -140,7 +140,11 @@ de `index.html`.
 - [ ] Que un abogado del estudio revise las respuestas de la FAQ (f. 05) antes
       de publicar: dos de ellas afirman cosas sobre la ley y sobre plazos
       —la de la cuota alimentaria y la del amparo de salud— y van con la firma
-      del estudio
+      del estudio. La de herencia vino redactada por el estudio, no hace falta
+      revisarla
+- [ ] Decidir el tratamiento en la FAQ: la respuesta sobre herencia usa "usted"
+      y el resto del sitio usa "vos". Hoy conviven; unificar cuando el estudio
+      defina cuál prefiere
 
 ## Revisión crítica (2026-08-01)
 
