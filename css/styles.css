@@ -203,12 +203,22 @@ ul,ol{list-style:none}
 .btn--ghost:hover{border-color:var(--gold);color:var(--gold-lit)}
 .btn--ghost::after{display:none}
 
-/* ── Reveal ────────────────────────────────────────────── */
-.reveal{
-  opacity:0;transform:translateY(1.2rem);
-  transition:opacity .75s var(--ease-out) var(--d,0s),transform .75s var(--ease-out) var(--d,0s);
+/* ── Reveal ──────────────────────────────────────────────
+   El ocultado va DENTRO de @media (scripting: enabled), y eso no es
+   un detalle: quien enciende .is-in es el JavaScript. Si main.js no
+   llega a ejecutarse —JS desactivado, un fallo de red, una CSP mal
+   editada— sin esta guarda quedarían 48 bloques invisibles para
+   siempre y la página se leería en blanco.
+   Con la guarda, si no hay scripting el navegador ni siquiera aplica
+   la regla y todo el contenido se ve. En navegadores que no entiendan
+   la consulta, el bloque se descarta entero: mismo resultado seguro. */
+@media (scripting: enabled){
+  .reveal{
+    opacity:0;transform:translateY(1.2rem);
+    transition:opacity .75s var(--ease-out) var(--d,0s),transform .75s var(--ease-out) var(--d,0s);
+  }
+  .reveal.is-in{opacity:1;transform:none}
 }
-.reveal.is-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
 }
@@ -563,8 +573,16 @@ ul,ol{list-style:none}
 .toc__det[open] .toc__panel > p{animation:tocIn .4s var(--ease-out)}
 @keyframes tocIn{from{opacity:0;transform:translateY(-.35rem)}to{opacity:1;transform:none}}
 .toc__panel em{font-family:var(--serif);font-style:italic}
-.toc__panel a{color:var(--gold-deep);border-bottom:1px solid rgba(126,97,31,.35)}
-.toc__panel a:hover{border-bottom-color:var(--gold-deep)}
+/* Subrayado por fondo en vez de borde: con background-origin:content-box
+   el relleno agranda el área táctil sin despegar la línea del texto. */
+.toc__panel a{
+  color:var(--gold-deep);
+  display:inline-block;padding-block:.3rem;
+  background-image:linear-gradient(rgba(126,97,31,.4),rgba(126,97,31,.4));
+  background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat;
+  background-origin:content-box;
+}
+.toc__panel a:hover{background-image:linear-gradient(var(--gold-deep),var(--gold-deep))}
 
 /* ── f.04 Previsional (el corte oscuro del medio) ─────── */
 .prev{
@@ -713,8 +731,16 @@ ul,ol{list-style:none}
   letter-spacing:-.015em;line-height:1.2;
 }
 .contact__data dd a{
+  /* El teléfono medía 23px de alto y el mail 16: por debajo de los 24
+     que pide WCAG 2.2 (2.5.8) y difíciles de acertar con el pulgar,
+     justo en los dos enlaces que más importan de la página.
+     background-origin:content-box mantiene el subrayado pegado al
+     texto en lugar de irse al fondo del relleno. */
+  display:inline-block;
+  padding-block:.45rem;
   background-image:linear-gradient(var(--gold),var(--gold));
   background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;
+  background-origin:content-box;
   transition:background-size .45s var(--ease-out),color .3s;
 }
 .contact__data dd a:hover{background-size:100% 1px;color:var(--gold-lit)}
@@ -740,9 +766,10 @@ ul,ol{list-style:none}
   text-transform:uppercase;color:var(--gold);margin-top:.6rem}
 .foot__sub{color:var(--on-dark-mut);font-size:.87rem;margin-top:.85rem;max-width:22rem}
 
-.foot__nav{display:grid;gap:.5rem;font-size:.86rem;justify-items:start}
+.foot__nav{display:grid;gap:.25rem;font-size:.86rem;justify-items:start}
 .foot__nav a{
   display:inline-flex;align-items:baseline;gap:.6rem;
+  padding-block:.3rem;          /* 23px de alto quedaban por debajo del mínimo de 24 */
   color:var(--on-dark-mut);transition:color .25s,transform .3s var(--ease-out);
 }
 .foot__nav a i{font-family:var(--mono);font-style:normal;font-size:.62rem;color:var(--gold-deep)}

@@ -196,6 +196,46 @@ de `index.html`.
       y el resto del sitio usa "vos". Hoy conviven; unificar cuando el estudio
       defina cuál prefiere
 
+## Verificación en PC y celular (2026-08-01)
+
+Renderizado real con Chrome headless vía DevTools Protocol, en 8 anchos:
+320, 360, 390, 820, 960, 1280, 1440 y 1920 px. Medido en cada uno el
+desbordamiento horizontal, los errores de consola, las peticiones fallidas y
+el tamaño de todos los objetivos táctiles.
+
+**Resultado tras los arreglos:** 0 desbordes, 0 errores de consola, 0 peticiones
+fallidas y 0 objetivos táctiles por debajo del mínimo, en los 8 anchos.
+
+### Fallo crítico encontrado: la página quedaba en blanco sin JavaScript
+
+`.reveal` arranca en `opacity:0` y es el JavaScript el que enciende `.is-in` al
+hacer scroll. Medido con la ejecución de scripts desactivada: **48 de 48 bloques
+invisibles**. Sin JS no se veían los títulos, ni los botones de WhatsApp, ni el
+teléfono, ni el mail — la página se leía prácticamente vacía.
+
+Cualquier motivo bastaba para provocarlo: JavaScript desactivado, un fallo de red
+al pedir `main.js`, una extensión del navegador, o una CSP mal editada. Este
+último caso es especialmente relevante ahora que el sitio tiene CSP.
+
+Arreglado envolviendo el ocultado en `@media (scripting: enabled)`. Si no hay
+scripting, el navegador no aplica la regla y todo el contenido se ve. Verificado:
+de 48 bloques invisibles a 0, sin perder la animación cuando el JS sí carga.
+
+### Objetivos táctiles por debajo del mínimo (WCAG 2.2, SC 2.5.8)
+
+Diez enlaces medían menos de los 24 px que exige el criterio. Los dos peores
+eran, justamente, los que más importan en un estudio jurídico:
+
+| Enlace | Antes | Ahora |
+|---|---|---|
+| Email de contacto | 16 px | 30 px |
+| Teléfono | 23 px | 37 px |
+| 7 enlaces del pie | 23 px | 33 px |
+| "Ver el detalle completo en f. 04" | 17 px | 27 px |
+
+En los enlaces con subrayado se usó `background-origin: content-box`, para que
+el relleno agrande el área táctil sin despegar la línea del texto.
+
 ## Revisión crítica (2026-08-01)
 
 Pasada de control de calidad sobre el sitio ya entregado, antes de darlo por
