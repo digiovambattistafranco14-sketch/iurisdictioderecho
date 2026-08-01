@@ -291,7 +291,10 @@ ul,ol{list-style:none}
 
 /* ═══════════ f.01 — CARÁTULA ══════════════════════════ */
 .cover{
-  position:relative;isolation:isolate;
+  /* z-index:1 es necesario, no decorativo: `isolation` encapsula el z-index del
+     sello adentro de .cover, así que sin esto la sección siguiente le tapa la
+     mitad que sobresale por abajo. */
+  position:relative;isolation:isolate;z-index:1;
   min-height:100svh;
   display:grid;
   grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
@@ -715,7 +718,12 @@ ul,ol{list-style:none}
   transition:background-size .45s var(--ease-out),color .3s;
 }
 .contact__data dd a:hover{background-size:100% 1px;color:var(--gold-lit)}
-.contact__data dd a.is-sm{font-size:.72em;word-break:break-word}
+/* El mail es largo: tamaño absoluto (no relativo al dd) para que entre
+   en la columna sin partirse a la mitad en pantallas medianas */
+.contact__data dd a.is-sm{
+  font-size:clamp(.82rem,.76rem + .3vw,1.02rem);
+  overflow-wrap:anywhere;
+}
 
 /* ═══════════ FOOTER ═══════════════════════════════════ */
 .foot{

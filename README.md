@@ -25,7 +25,7 @@ buscá y reemplazá en **`index.html`**:
 |---|---|---|
 | WhatsApp | `5492213585005` | 6 links `wa.me/...` |
 | Teléfono | `221 358-5005` | sección Contacto + JSON-LD |
-| Email | `estudiojuridico@outlook.com` | sección Contacto + JSON-LD |
+| Email | `garciayasociados_estjuridico@outlook.com` | sección Contacto + JSON-LD |
 | Instagram | `iurisdictioderecho` | 3 links + JSON-LD |
 
 > Formato de WhatsApp: `54` (país) + `9` (celular) + `221` (área sin el 0) +
@@ -102,7 +102,9 @@ Tipografías (Google Fonts): **Fraunces** (serif editorial, títulos),
 - El botón flotante de WhatsApp y el del nav tienen `aria-label` que **contiene**
   el texto visible del botón (WCAG 2.5.3, *Label in Name*) — antes el flotante
   tenía una etiqueta que no coincidía con lo que se leía en pantalla, y el del
-  nav se quedaba sin nombre accesible al ocultar el texto en mobile
+  nav se quedaba sin nombre accesible al ocultar el texto en mobile.
+  Si cambiás el texto visible del botón flotante, cambiá también su `aria-label`:
+  el segundo tiene que seguir conteniendo al primero
 - Frases en latín (*in itinere*, *ab intestato*) marcadas `lang="la"` para que
   se pronuncien bien en un lector de pantalla en español
 - Respeta `prefers-reduced-motion` (apaga el sello, los reveals y el scroll suave)
@@ -130,7 +132,9 @@ de `index.html`.
 - [ ] Horarios de atención
 - [ ] Nombre y matrícula del titular para la sección "El estudio"
 - [ ] Dominio definitivo
-- [ ] Confirmar que la primera consulta es sin cargo (está afirmado en la FAQ)
+- [x] ~~Confirmar si la primera consulta es sin cargo~~ → **La consulta es
+      remunerada.** Corregido en la FAQ (f. 05) el 2026-08-01: antes decía que
+      era gratuita, que era una suposición mía y no un dato del estudio
 
 ## Revisión crítica (2026-08-01)
 
