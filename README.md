@@ -12,6 +12,7 @@ Sin build, sin dependencias, sin framework. Se abre haciendo doble clic en
 index.html          Página completa (todas las secciones)
 css/styles.css      Sistema de diseño + layout + animaciones
 js/main.js          Nav, acordeones, reveal on scroll, menú móvil
+netlify.toml        Cabeceras de seguridad (ver "Seguridad")
 img/logo.jpg        Logo optimizado (74 KB) — el que usa la página
 img/*.png           Material de referencia original del Instagram
 ```
@@ -114,6 +115,55 @@ Tipografías (Google Fonts): **Fraunces** (serif editorial, títulos),
 - Cada sección tiene `isolation:isolate`: encapsula su propio z-index para que
   ningún elemento interno pueda terminar por accidente por encima del nav o
   la regla de margen fijos
+
+## Seguridad
+
+El sitio es estático: no hay backend, ni formularios, ni base de datos, ni datos
+de usuarios. Eso ya elimina de entrada las vulnerabilidades más comunes
+(inyección SQL, XSS por entrada de usuario, robo de sesiones). Lo que queda se
+cubre desde **`netlify.toml`**, que Netlify aplica solo al desplegar.
+
+| Cabecera | Qué evita |
+|---|---|
+| `Content-Security-Policy` | Lista blanca de lo único que el navegador puede cargar. Si algún día alguien inyectara un script o un iframe en el HTML, el navegador se niega a ejecutarlo |
+| `X-Frame-Options` + `frame-ancestors` | *Clickjacking*: que otro sitio meta la web en un iframe invisible para robar clics |
+| `X-Content-Type-Options: nosniff` | Que el navegador "adivine" el tipo de un archivo y ejecute como script algo servido como imagen o texto |
+| `Referrer-Policy` | Al salir a WhatsApp o Instagram se manda solo el dominio, nunca la sección que la persona estaba leyendo |
+| `Permissions-Policy` | Que el sitio pueda pedir cámara, micrófono, ubicación o pagos: se los niega explícitamente |
+| `Cross-Origin-Opener-Policy` | Que una ventana abierta desde el sitio pueda manipular la original |
+| `Strict-Transport-Security` | Fuerza HTTPS durante un año |
+
+Además:
+
+- Todos los enlaces externos llevan `rel="noopener"`, para que la pestaña que se
+  abre no pueda tocar la que queda atrás
+- `README.md` y `claude.md` devuelven 404: viven en el repo porque sirven para
+  mantener el sitio, pero no son parte de la web pública. Sin esa regla
+  quedarían accesibles en `tudominio.com/README.md`
+
+### Notas para quien edite esto después
+
+- **`'unsafe-inline'` está solo en `style-src`, y hace falta.** Los retardos de
+  las animaciones viajan como atributos `style="--d:…"` en el HTML. Es un permiso
+  de estilos, no de scripts: no permite ejecutar código. Si algún día esos
+  retardos pasan a clases de CSS, se puede sacar
+- **`Strict-Transport-Security` va sin `includeSubDomains` ni `preload`** a
+  propósito: los dos son muy difíciles de revertir y el dominio definitivo
+  todavía no está configurado. Se pueden agregar cuando el dominio esté firme
+- **Si agregás un recurso externo** (un script de analítica, un mapa embebido,
+  una fuente nueva), la CSP lo va a bloquear hasta que lo declares. Es la idea:
+  el bloqueo avisa que entró una dependencia nueva. Se ve en la consola del
+  navegador (F12)
+
+### Mejora pendiente: alojar las tipografías
+
+Hoy las fuentes vienen de Google Fonts, así que **la IP de cada visitante llega
+a Google** en cada carga. En un estudio jurídico eso pesa: alguien que consulta
+por un divorcio o una causa penal deja rastro en un tercero.
+
+Descargar los `.woff2` y servirlos desde `/fonts` cerraría eso, y de paso
+mejoraría la velocidad y permitiría endurecer la CSP (se caerían las dos
+excepciones a `fonts.googleapis.com` y `fonts.gstatic.com`).
 
 ## Publicar
 
