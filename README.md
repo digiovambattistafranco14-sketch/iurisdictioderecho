@@ -133,8 +133,10 @@ de `index.html`.
 - [ ] Nombre y matrícula del titular para la sección "El estudio"
 - [ ] Dominio definitivo
 - [x] ~~Confirmar si la primera consulta es sin cargo~~ → **La consulta es
-      remunerada.** Corregido en la FAQ (f. 05) el 2026-08-01: antes decía que
-      era gratuita, que era una suposición mía y no un dato del estudio
+      remunerada**, y por decisión del cliente el sitio no habla del tema.
+      La pregunta se sacó de la FAQ el 2026-08-01. Ojo al editar: no volver a
+      escribir en ningún lado que la consulta es gratuita, y revisar que el
+      botón flotante no diga "gratis"
 
 ## Revisión crítica (2026-08-01)
 
