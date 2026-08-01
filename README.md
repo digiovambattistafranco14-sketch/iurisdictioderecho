@@ -137,6 +137,10 @@ de `index.html`.
       La pregunta se sacó de la FAQ el 2026-08-01. Ojo al editar: no volver a
       escribir en ningún lado que la consulta es gratuita, y revisar que el
       botón flotante no diga "gratis"
+- [ ] Que un abogado del estudio revise las respuestas de la FAQ (f. 05) antes
+      de publicar: dos de ellas afirman cosas sobre la ley y sobre plazos
+      —la de la cuota alimentaria y la del amparo de salud— y van con la firma
+      del estudio
 
 ## Revisión crítica (2026-08-01)
 
