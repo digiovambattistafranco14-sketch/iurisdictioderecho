@@ -101,7 +101,8 @@ ul,ol{list-style:none}
   transition:color .5s var(--ease);
 }
 .folio__n{
-  font-size:.72rem;letter-spacing:.1em;
+  font-size:.66rem;letter-spacing:.08em;
+  white-space:nowrap;               /* "03 bis" no debe partirse en dos renglones */
   padding-bottom:.55rem;position:relative;
 }
 .folio__n::after{

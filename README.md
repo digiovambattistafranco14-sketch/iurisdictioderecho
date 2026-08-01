@@ -92,15 +92,32 @@ Tipografías (Google Fonts): **Fraunces** (serif editorial, títulos),
 
 ## Secciones
 
-| Folio | Sección | Contenido |
-|---|---|---|
-| f. 01 | Carátula | Logo, slogan, presentación, sello |
-| f. 02 | El estudio | Quiénes son, nota al margen, libro mayor de cifras |
-| f. 03 | Áreas de práctica | Índice desplegable de 10 áreas |
-| f. 04 | Previsional | Jubilaciones y pensiones (el fuerte comercial). **No va en el menú**: es un área de práctica, no una sección del sitio, así que estaba mal puesta al lado de "El estudio" o "Consultas". Se llega desde la entrada 04 del índice de Áreas |
-| f. 05 | Consultas | Tarjetas desplegables en el tono "Dr., una pregunta…" de su Instagram |
-| f. 06 | Cómo trabajamos | 3 pasos en romanos |
-| f. 07 | Contacto | WhatsApp, Instagram, teléfono, mail, jurisdicción |
+| Folio | Sección | En el menú | Contenido |
+|---|---|---|---|
+| f. 01 | Carátula | — | Logo, slogan, presentación, sello |
+| f. 02 | El estudio | sí | Quiénes son, nota al margen, libro mayor de cifras |
+| f. 03 | Áreas de práctica | sí | Índice desplegable de 10 áreas |
+| f. 03 bis | Previsional | **no** | Jubilaciones y pensiones (el fuerte comercial) |
+| f. 04 | Consultas | sí | Tarjetas desplegables en el tono "Dr., una pregunta…" de su Instagram |
+| f. 05 | Cómo trabajamos | sí | 3 pasos en romanos |
+| f. 06 | Contacto | sí | WhatsApp, Instagram, teléfono, mail, jurisdicción |
+
+### Por qué Previsional es "03 bis" y no está en el menú
+
+Es un **área de práctica**, no una sección del sitio: puesta al lado de "El
+estudio" o "Consultas" quedaba fuera de lugar, porque mezclaba dos niveles
+distintos. Se llega desde la entrada 04 del índice de Áreas, que tiene un
+enlace directo.
+
+El folio `03 bis` sigue la técnica legislativa argentina, donde *bis* numera lo
+que se inserta dentro de un artículo ya existente (art. 14 bis de la
+Constitución). Dice exactamente lo que hace falta: esta hoja pertenece a Áreas
+de práctica.
+
+Gracias a eso el menú queda consecutivo —02, 03, 04, 05, 06— sin saltos.
+**Si se agrega o se quita una sección, hay que renumerar los folios de las
+siguientes** en tres lugares: el `data-folio` de la sección, el `f. NN` de su
+encabezado, y los tres menús (escritorio, móvil y pie).
 
 ## Botones de contacto
 
