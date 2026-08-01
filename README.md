@@ -67,7 +67,7 @@ decoración: es lo que separa al sitio de cualquier plantilla de estudio jurídi
 |---|---|
 | **Regla de margen** vertical | La línea del papel oficio, fija durante todo el scroll |
 | **Foliatura viva** (`f. 03 — Áreas`) | El folio en el margen izquierdo, que cambia según la sección |
-| **Sello de goma** circular | Reemplaza al típico marquee. Lleva la leyenda "Atención en toda la provincia de Buenos Aires" y se estampa al cargar |
+| **Sello de goma** circular | Reemplaza al típico marquee. Lleva la leyenda "Atención en toda la provincia de Buenos Aires" y se estampa al cargar. Va apoyado sobre la placa del logo, en la esquina inferior: así queda siempre sobre fondo oscuro y no puede chocar con nada, porque se mueve con ella |
 | **Índice con guías punteadas** | Las áreas de práctica compuestas como un índice de libro, no como tarjetas |
 | **Párrafo justificado** con guionado | Como se compone un escrito judicial |
 | **Botones de bordes rectos** | Sin píldoras: rectángulos con sombra desplazada, como un sello sobre papel |
@@ -97,7 +97,7 @@ Tipografías (Google Fonts): **Fraunces** (serif editorial, títulos),
 | f. 01 | Carátula | Logo, slogan, presentación, sello |
 | f. 02 | El estudio | Quiénes son, nota al margen, libro mayor de cifras |
 | f. 03 | Áreas de práctica | Índice desplegable de 10 áreas |
-| f. 04 | Previsional | Jubilaciones y pensiones (el fuerte comercial) |
+| f. 04 | Previsional | Jubilaciones y pensiones (el fuerte comercial). **No va en el menú**: es un área de práctica, no una sección del sitio, así que estaba mal puesta al lado de "El estudio" o "Consultas". Se llega desde la entrada 04 del índice de Áreas |
 | f. 05 | Consultas | Tarjetas desplegables en el tono "Dr., una pregunta…" de su Instagram |
 | f. 06 | Cómo trabajamos | 3 pasos en romanos |
 | f. 07 | Contacto | WhatsApp, Instagram, teléfono, mail, jurisdicción |
@@ -257,6 +257,16 @@ eran, justamente, los que más importan en un estudio jurídico:
 
 En los enlaces con subrayado se usó `background-origin: content-box`, para que
 el relleno agrande el área táctil sin despegar la línea del texto.
+
+### Nota sobre el texto del sello
+
+Los cortes de línea de la leyenda están puestos a mano y **no son arbitrarios**:
+los renglones cortos van arriba y abajo, donde la cuerda del círculo es más
+angosta, y los largos al medio. Con el reparto anterior (el renglón más largo
+primero) el texto se salía del círculo entre 4 y 17 px en todos los anchos.
+
+Si se cambia el texto o el tamaño del sello, hay que volver a repartir los
+cortes en forma de rombo y comprobar que entre.
 
 ## Revisión crítica (2026-08-01)
 

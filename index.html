@@ -82,7 +82,6 @@
   <nav class="nav__links" aria-label="Principal">
     <a href="#estudio"><span class="nav__f" aria-hidden="true">02</span> El estudio</a>
     <a href="#areas"><span class="nav__f" aria-hidden="true">03</span> Áreas</a>
-    <a href="#previsional"><span class="nav__f" aria-hidden="true">04</span> Previsional</a>
     <a href="#consultas"><span class="nav__f" aria-hidden="true">05</span> Consultas</a>
     <a href="#contacto"><span class="nav__f" aria-hidden="true">07</span> Contacto</a>
   </nav>
@@ -100,7 +99,6 @@
 <div class="mmenu" id="mobilemenu" hidden>
   <a href="#estudio"><i aria-hidden="true">02</i> El estudio</a>
   <a href="#areas"><i aria-hidden="true">03</i> Áreas de práctica</a>
-  <a href="#previsional"><i aria-hidden="true">04</i> Previsional</a>
   <a href="#consultas"><i aria-hidden="true">05</i> Consultas frecuentes</a>
   <a href="#proceso"><i aria-hidden="true">06</i> Cómo trabajamos</a>
   <a href="#contacto"><i aria-hidden="true">07</i> Contacto</a>
@@ -145,15 +143,17 @@
 
   <figure class="cover__plate reveal" style="--d:.48s">
     <img src="img/logo.jpg" alt="Logo de Iurisdictio Derecho sobre una biblioteca jurídica" width="816" height="810" fetchpriority="high" decoding="async">
+
+    <!-- Sello de goma estampado sobre la placa: así queda siempre sobre
+         fondo oscuro y acompaña a la placa en cualquier tamaño. -->
+    <div class="seal" aria-hidden="true">
+      <!-- Cortes pensados para el círculo: los renglones cortos arriba y
+           abajo, donde la cuerda es más angosta. -->
+      <span class="seal__main">Atención<br>en toda la<br>provincia de<br>Buenos Aires</span>
+    </div>
+
     <figcaption>García y Asociados · desde 2022</figcaption>
   </figure>
-
-  <!-- Sello de goma: reemplaza al típico marquee -->
-  <div class="seal" aria-hidden="true">
-    <span class="seal__top">Iurisdictio Derecho</span>
-    <span class="seal__main">Atención en toda la<br>provincia de Buenos Aires</span>
-    <span class="seal__bot">García y Asociados</span>
-  </div>
   <p class="sr-only">Atención en toda la provincia de Buenos Aires.</p>
 </section>
 
@@ -514,7 +514,6 @@
   <nav class="foot__nav" aria-label="Pie de página">
     <a href="#estudio"><i aria-hidden="true">02</i> El estudio</a>
     <a href="#areas"><i aria-hidden="true">03</i> Áreas de práctica</a>
-    <a href="#previsional"><i aria-hidden="true">04</i> Previsional</a>
     <a href="#consultas"><i aria-hidden="true">05</i> Consultas</a>
     <a href="#proceso"><i aria-hidden="true">06</i> Cómo trabajamos</a>
     <a href="#contacto"><i aria-hidden="true">07</i> Contacto</a>
