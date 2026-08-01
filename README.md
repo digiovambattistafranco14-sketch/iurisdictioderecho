@@ -14,8 +14,30 @@ css/styles.css      Sistema de diseño + layout + animaciones
 js/main.js          Nav, acordeones, reveal on scroll, menú móvil
 netlify.toml        Cabeceras de seguridad (ver "Seguridad")
 img/logo.jpg        Logo optimizado (74 KB) — el que usa la página
+img/og.jpg          Vista previa al compartir el link (2400x1260)
 img/*.png           Material de referencia original del Instagram
 ```
+
+## Dominio
+
+El sitio vive en **https://iurisdictioderecho.netlify.app/**. Ese dominio está
+escrito en cuatro lugares de `index.html`: `canonical`, `og:url`, `og:image` y
+el bloque JSON-LD. Si algún día se pasa a un dominio propio, hay que cambiarlo
+en los cuatro.
+
+> `og:url` y `og:image` **tienen que ser URLs absolutas**. Los rastreadores de
+> WhatsApp, Instagram y Facebook no resuelven rutas relativas: con una ruta
+> relativa el link se comparte sin vista previa.
+
+### La imagen de vista previa (`img/og.jpg`)
+
+Es la tarjeta que aparece cuando alguien comparte el link por WhatsApp. Mide
+2400x1260 (el doble de los 1200x630 recomendados, para que se vea nítida en
+pantallas retina) y usa la misma identidad que la carátula del sitio: fondo
+carbón, tipografía Fraunces, el logo y la leyenda de cobertura provincial.
+
+Si hay que rehacerla, lo importante es respetar la proporción 1,91:1 y volver a
+declarar las dimensiones reales en `og:image:width` / `og:image:height`.
 
 ## Datos de contacto (dónde cambiarlos)
 
